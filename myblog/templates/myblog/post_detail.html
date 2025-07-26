@@ -1,0 +1,18 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<hr>
+<h2>댓글</h2>
+<ul>
+  {% for comment in comments %}
+    <li><strong>{{ comment.author }}:</strong> {{ comment.content }}</li>
+  {% empty %}
+    <li>댓글이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<h3>댓글 작성</h3>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">댓글 등록</button>
+</form>
